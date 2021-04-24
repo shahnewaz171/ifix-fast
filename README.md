@@ -22,4 +22,4 @@ This is a complete MERN stack E-commerce website.
 - Express js
 - MongoDB
 
-Backend Repository: [link](https://github.com/shahnewaz171/ifix-fast-server)
+Backend Repository: [iFix-Fast](https://github.com/shahnewaz171/ifix-fast-server)

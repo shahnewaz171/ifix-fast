@@ -1,0 +1,25 @@
+.service-list{
+    margin: 0px 15px;
+}
+.border-radius{
+    border-radius: 10px;
+}
+.pad2{
+    padding: 15px;
+}
+.book-status{
+    height: 24px;
+    border-radius: 3px;
+}
+.pending{
+    background-color: #ffdcdc;
+    color: #e24343;
+}
+.done{
+    background-color: #dcffdf;
+    color: #3dc73a;
+}
+.onGoing{
+    color: #efa80a !important;
+    background-color: #f2f7ca;
+}

@@ -1,0 +1,60 @@
+.pdList th, 
+.pdList td{
+    border-bottom-width: 0px !important;
+}
+.pd-description{
+    width: 100%;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+.table thead{
+    background-color: #eeeef9;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+.table th{
+    color: #000 !important;
+}
+.table td{
+    color: #000;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.pending{
+    color: #e24343 !important;
+}
+.done{
+    color: #3dc73a !important;
+}
+.edit-icon{
+    background-color: rgb(8, 160, 8);
+    padding: 4px 5px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all .3s;
+}
+.edit-icon:hover{
+    background-color: rgb(8, 107, 8);
+}
+.delete-icon{
+    background-color: rgb(236, 36, 36);
+    padding: 4px 5px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all .3s;
+    margin-left: 8px;
+}
+.delete-icon:hover{
+    background-color: rgb(185, 29, 29);
+}
+select{
+    border-width: 0px !important;
+}
+.action-icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

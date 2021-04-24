@@ -1,0 +1,21 @@
+.nav-link{
+    color: #07383f !important;
+    font-weight: 500;
+}
+.nav-link:hover{
+    color: #45657a !important;
+}
+.btn-style{
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: white;
+}
+.btn-style:hover{
+    background-color: #138496;
+    border-color: #117a8b;
+    color: white;
+}
+.user-name{
+    font-size: 18px;
+    font-weight: 700 !important;
+}

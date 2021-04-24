@@ -1,0 +1,20 @@
+input{
+    padding: 12px 15px !important;
+}
+.contact-btn{
+    margin-left: inherit;
+}
+.info-bottom{
+    border-bottom: 1px solid salmon;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

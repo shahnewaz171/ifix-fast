@@ -1,0 +1,21 @@
+.author{
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+}
+.author a,
+time{
+    text-decoration: none;
+    color: gray !important;
+}
+.borderStyle{
+    border: 20px solid #f9f8f8;
+}
+.card{
+    overflow: hidden;
+}
+.card{
+    transition: all .3s ease;
+}
+.card:hover{
+    transform: scale(1.04);
+}

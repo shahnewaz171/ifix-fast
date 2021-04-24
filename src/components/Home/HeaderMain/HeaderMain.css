@@ -1,0 +1,15 @@
+.headerTitle{
+    color: #094953;
+    font-size: 55px;
+    font-weight: 700;
+}
+
+@media (max-width: 767px){
+    .headerTitle{
+        font-size: 40px;
+        margin-top: 3rem;
+    }
+    .headerImg{
+        margin-top: 2rem;
+    }
+}

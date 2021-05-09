@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const Service = ({service}) => {
     const {title, price, description, img, _id} = service;
     return (
-        <div className="col-12 col-md-4 mb mb-md-4 cardShadow">
-            <Link to={`/book/${_id}`} className="serviceLink">
-                <div className="serviceItem service-shadow">
+        <div className="col-12 col-md-4 mb mb-md-4 service-animate">
+            <Link to={`/book/${_id}`} className="serviceLink ">
+                <div className="serviceItem service-shadow cardShadow">
                     <div className="serviceImg mb-4 cardAnimate">
                         {
                             service.image  ? <img src={`data:image/jpeg;base64,${service.image.img}`} alt=""/>

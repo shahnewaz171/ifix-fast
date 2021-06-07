@@ -2,6 +2,7 @@ import React, { createContext, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Book from "./components/Dashboard/User/Book/Book";
 import BookList from "./components/Dashboard//User/BookList/BookList";
+import Navbar from "./components/Shared/Navbar/Navbar";
 import Review from "./components/Dashboard//User/Review/Review";
 import Home from "./components/Home/Home/Home";
 import Order from "./components/Dashboard/Admin/Order/Order";
@@ -24,6 +25,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/">
+              <Navbar />
               <Home />
             </Route>
             <PrivateRoute path="/book/:bookId">

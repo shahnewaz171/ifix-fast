@@ -6,7 +6,7 @@ import laptop from '../../../images/laptop.jpg';
  
 const Project = () => {
     return (
-        <div className="container mt-5">
+        <div className="container mt-5 mb-5 pb-4">
             <div className="sectionTitle">
                 <h2 className="text-center pt-5 mb-5">Projects</h2>
             </div>

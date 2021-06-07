@@ -10,8 +10,8 @@ const HeaderMain = () => {
                 <h1 className="mb-4 headerTitle">Fast & Quick Fix</h1>
                 <p className="text-secondary">Just send valuable laptop, PC, MAC, Mobile,
                     Gaming Device or Smartphone and we'll take care of it.</p>
-                <Link to="#">
-                    <button type="button" className="btn btn-style text-uppercase mt-4">read more</button>
+                <Link to="/login">
+                    <button type="button" className="btn btn-style text-uppercase mt-4">get started</button>
                 </Link>
             </div>
             <div className="col-md-1"></div>

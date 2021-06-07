@@ -20,8 +20,20 @@ const Navbar = () => {
         .then(data => setIsAdmin(data))
     }, [loggedInUser.email])
 
+    const [navbarAnimation, setNavbarAnimation] = useState(false);
+
+    const changeBackground = () => {
+        if(window.scrollY >= 80) {
+            setNavbarAnimation(true);
+        }
+        else{
+            setNavbarAnimation(false);
+        }
+    }
+    window.addEventListener('scroll', changeBackground);
+
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className={navbarAnimation ? "navbar navbar-expand-lg navbar-light bg-light sticky-md-top nav-bg" : "navbar navbar-expand-lg navbar-light bg-light"}>
             <div className="container">
                 <Link to="#" className="navbar-brand">
                     <img src={logo} className="img-fluid" alt="logo"/>
@@ -32,20 +44,25 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" style={{marginTop: loggedInUser.email ? '1.3rem': ''}}>
                     <ul className="navbar-nav ">
                         <li className="nav-item">
-                            <Link to="#" className="nav-link me-5">Home</Link>
+                            <Link to="#" className="nav-link me-4">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="#" className="nav-link me-5">About us</Link>
+                            <Link to="#" className="nav-link me-4">About us</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="#" className="nav-link me-5">Projects</Link>
+                            <Link to="#" className="nav-link me-4">Projects</Link>
                         </li>
+                        {!isAdmin && 
+                            <li className="nav-item">
+                                <Link to="/book" className="nav-link me-4">Dashboard</Link>
+                            </li>
+                        }
                         <li className="nav-item">
-                            <Link to="#" className="nav-link me-5">Contact</Link>
+                            <Link to="#" className="nav-link me-4">Contact</Link>
                         </li>
                         {isAdmin && 
                             <li className="nav-item">
-                                <Link to="/admin" className="nav-link me-5">Admin</Link>
+                                <Link to="/admin" className="nav-link me-4">Admin</Link>
                             </li>
                         }
                         <li className="nav-item">

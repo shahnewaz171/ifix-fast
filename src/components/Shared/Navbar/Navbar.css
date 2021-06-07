@@ -16,6 +16,12 @@
     color: white;
 }
 .user-name{
-    font-size: 18px;
+    /* font-size: 18px; */
     font-weight: 700 !important;
+}
+.nav-bg{
+    background-color: white !important;
+    padding-top: .2rem !important;
+    padding-bottom: .2rem !important;
+    box-shadow: 4px 4px 4px #efeeee;
 }

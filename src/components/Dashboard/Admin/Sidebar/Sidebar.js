@@ -89,7 +89,7 @@ const Sidebar = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/manageServices">
+                                <Link to="#">
                                     <FontAwesomeIcon icon={faEdit} /> 
                                     <span className="ms-2">Edit Services</span>
                                 </Link>
@@ -129,7 +129,7 @@ const Sidebar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/manageServices">
+                            <Link to="#">
                                 <FontAwesomeIcon icon={faEdit} /> 
                                 <span className="ms-2">Edit Services</span>
                             </Link>

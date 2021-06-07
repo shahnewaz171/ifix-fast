@@ -44,7 +44,7 @@ const Book = () => {
             }
         })
     }
-    
+    console.log(singleService.title);
     
     return (
         <div>
@@ -65,8 +65,15 @@ const Book = () => {
                         <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </div>}
+                
+                {singleService.title == null && <div className="mx-5 mt-4">
+                    <div className="alert alert-warning alert-dismissible fade show orderSuccess" role="alert">
+                         Please, go to the home page and select a service then you can book a service. Thank you!
+                        <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>}
 
-                <div className="mx-5 mt-4 width">
+                {singleService.title != null && <div className="mx-5 mt-4 width">
                     {!orderSuccess && <div style={{display: bookingData ? 'none': 'block'}}>
                         <form action="" onSubmit={handleSubmit(onSubmit)}>
                             <div className="bg-white border-radius">
@@ -96,7 +103,7 @@ const Book = () => {
                         <h2 className="mb-5 mt-3">Payment Method</h2>
                         <ProcessPayment handlePayment={handlePaymentSuccess}></ProcessPayment>
                     </div>}
-                </div>
+                </div>}
             </div>
         </div>
     );

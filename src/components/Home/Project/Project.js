@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Project.css';
 import phone from '../../../images/phone.jpg';
 import tablet from '../../../images/tablet.jpg';
 import laptop from '../../../images/laptop.jpg';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
  
 const Project = () => {
+    useEffect(() => {
+        AOS.init({ duration: 2000})
+    }, [])
+
     return (
         <div className="container mt-5 mb-5 pb-4">
             <div className="sectionTitle">
                 <h2 className="text-center pt-5 mb-5 section-title">Projects</h2>
             </div>
-            <div className="row row-cols-1 row-cols-md-3 g-4 mt-4">
-                <div className="col">
+            <div className="row row-cols-1 row-cols-md-3 g-4 mt-4 ">
+                <div className="col col-md-4" data-aos="fade-up-right">
                     <div className="card">
                         <img src={phone} className="card-img-top"  alt=""/>
                         <div className="card-body">
@@ -23,7 +29,7 @@ const Project = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col">
+                <div className="col col-md-4" data-aos="fade-up">
                     <div className="card">
                         <img src={tablet} className="card-img-top"  alt=""/>
                         <div className="card-body">
@@ -35,7 +41,7 @@ const Project = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col">
+                <div className="col col-md-4" data-aos="fade-up-left">
                     <div className="card">
                         <img src={laptop} className="card-img-top" alt=""/>
                         <div className="card-body">

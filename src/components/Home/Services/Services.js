@@ -23,7 +23,6 @@ const Services = () => {
         .catch(error => alert("Something went wrong!! Please try again later!"))
     }, [])
 
-    
     return (
         <div className="container mt-5 mb-5">
             <div className="sectionTitle">

@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Testimonial.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Testimonial = ({testimonial}) => {
     const {name, quote, designation, img} = testimonial;
+    useEffect(() => {
+        AOS.init({ duration: 2000})
+    }, [])
 
     return (
         <div className="item testimonialInfo">

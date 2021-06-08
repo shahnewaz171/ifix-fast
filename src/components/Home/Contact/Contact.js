@@ -1,7 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import emailjs from 'emailjs-com';
 import './Contact.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const Contact = () => {
     function sendEmail(e) {
         e.preventDefault();
@@ -15,13 +17,16 @@ const Contact = () => {
           e.target.reset();
     }
 
+    useEffect(() => {
+        AOS.init({ duration: 2000})
+    }, [])
 
     return (
         <section className="container mb-5">
       <div className="contact-section">
         <h2 className="text-center mb-1 pb-2 pt-5 contact-title section-title">Contact Us</h2>
         <p className="mb-4 pb-4 text-center">We are always available. Feel free to contact us anytime.</p>
-        <div className="row mb-5">
+        <div className="row mb-5" data-aos="fade-left">
             <div className="col-md-2"></div>
             <div className="col-md-8">
                 <form onSubmit={sendEmail}>

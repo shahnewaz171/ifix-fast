@@ -15,6 +15,7 @@ const Contact = () => {
           e.target.reset();
     }
 
+
     return (
         <section className="container mb-5">
       <div className="contact-section">

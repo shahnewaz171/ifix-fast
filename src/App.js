@@ -14,6 +14,7 @@ import Books from "./components/Dashboard/User/Books/Books";
 import ManageServices from "./components/Dashboard/Admin/ManageServices/ManageServices";
 import EditService from "./components/Dashboard/Admin/EditService/EditService";
 import './App.css';
+import ScrollToTop from "./components/Shared/ScrollToTop/ScrollToTop";
 
 export const UserContext = createContext();
 
@@ -28,6 +29,7 @@ function App() {
             <Route exact path="/">
               <Navbar />
               <Home />
+              <ScrollToTop></ScrollToTop>
             </Route>
             <PrivateRoute path="/book/:bookId">
               <Book />

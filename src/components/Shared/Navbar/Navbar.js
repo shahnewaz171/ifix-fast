@@ -50,7 +50,7 @@ const Navbar = () => {
                             <Link to="#" className="nav-link me-4">About us</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="#" className="nav-link me-4">Projects</Link>
+                            <Link to="projects" className="nav-link me-4">Projects</Link>
                         </li>
                         {!isAdmin && 
                             <li className="nav-item">

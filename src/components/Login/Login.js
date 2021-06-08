@@ -13,6 +13,7 @@ initializeLoginFramework();
 
 const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    console.log(loggedInUser);
     const [newUser, setNewUser] = useState(false);
     const { register, handleSubmit, watch, errors } = useForm();
     const password = useRef();

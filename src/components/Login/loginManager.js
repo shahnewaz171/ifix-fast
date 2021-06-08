@@ -13,8 +13,8 @@ export const handleGoogleSignIn = () => {
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     return firebase.auth().signInWithPopup(googleProvider )
     .then((result) => {
-        const {displayName, email} = result.user;
-        const signedInUser = {name: displayName,email: email, success: true}
+        const {displayName, email, photoURL} = result.user;
+        const signedInUser = {name: displayName, email: email, image: photoURL, success: true}
         return signedInUser;
     }).catch((error) => {
         var errorCode = error.code;
@@ -28,8 +28,8 @@ export const handleFacebookSignIn = () => {
     const facebookProvider = new firebase.auth.FacebookAuthProvider();
     return firebase.auth().signInWithPopup(facebookProvider)
     .then((result) => {
-        const {displayName, email} = result.user;
-        const signedInUser = {name: displayName,email: email, success: true}
+        const {displayName, email, photoURL} = result.user;
+        const signedInUser = {name: displayName, email: email, image: photoURL, success: true}
         return signedInUser;
     }).catch((error) => {
         var errorCode = error.code;

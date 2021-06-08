@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Book from "./components/Dashboard/User/Book/Book";
 import BookList from "./components/Dashboard//User/BookList/BookList";
@@ -19,22 +19,34 @@ import Services from "./components/Home/Services/Services";
 import Footer from "./components/Shared/Footer/Footer";
 import Project from "./components/Home/Project/Project";
 import Contact from "./components/Home/Contact/Contact";
+import Loading from "./components/Loading";
 
 export const UserContext = createContext();
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState({})
+  const [loggedInUser, setLoggedInUser] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000)
+  }, [])
 
   return (
     <div>
       <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
         <Router>
           <Switch>
-            <Route exact path="/">
-              <Navbar />
-              <Home />
-              <ScrollToTop></ScrollToTop>
-            </Route>
+            { loading ?
+              <Loading /> :
+              <Route exact path="/">
+                <Navbar />
+                <Home />
+                <ScrollToTop></ScrollToTop>
+              </Route>
+            }
             <PrivateRoute path="/book/:bookId">
               <Book />
             </PrivateRoute>
@@ -72,16 +84,19 @@ function App() {
               <Navbar />
               <Services />
               <Footer />
+              <ScrollToTop></ScrollToTop>
             </Route>
             <Route path="/projects">
               <Navbar />
               <Project />
               <Footer />
+              <ScrollToTop></ScrollToTop>
             </Route>
             <Route path="/contact">
               <Navbar />
               <Contact />
               <Footer />
+              <ScrollToTop></ScrollToTop>
             </Route>
           </Switch>
       </Router>

@@ -59,7 +59,7 @@ const Navbar = () => {
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" style={{marginTop: loggedInUser.email ? '1.3rem': ''}}>
+                <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul className="navbar-nav ">
                         <li className="nav-item">
                             <NavLink to="/" exact activeClassName="nav-link-active" className="nav-link me-4">Home</NavLink>
@@ -99,7 +99,7 @@ const Navbar = () => {
                             }
                         </li> */}
                     </ul>
-                    {loggedInUser.email && <div className="nav-link px-2 dropdown header-user user-menu large-device-avater">
+                    {loggedInUser.email && <div className="nav-link pt-0 pb-0 px-2 dropdown header-user user-menu large-device-avater">
                         <div className="dropdown-toggle box-30 cursor rounded-circle" id="dropdownMenuItem1" data-bs-toggle="dropdown" aria-expanded="false">
                             {loggedInUser.image == null ?
                                 <img src={UserAvatar} className="img-circle"  alt=""/> :

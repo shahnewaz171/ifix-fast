@@ -31,7 +31,7 @@ const Testimonials = () => {
         <div className="bg-light">
             <div className="container">
                 <div className="sectionTitle">
-                    <h2 className="text-center pt-5 mb-5">Testimonials</h2>
+                    <h2 className="text-center pt-5 mb-5 section-title">Testimonials</h2>
                 </div>
                 <div className="mb-5">
                 <Carousel breakPoints={breakPoints}>

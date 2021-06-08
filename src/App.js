@@ -13,6 +13,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Books from "./components/Dashboard/User/Books/Books";
 import ManageServices from "./components/Dashboard/Admin/ManageServices/ManageServices";
 import EditService from "./components/Dashboard/Admin/EditService/EditService";
+import './App.css';
 
 export const UserContext = createContext();
 

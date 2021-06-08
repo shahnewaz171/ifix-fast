@@ -11,7 +11,7 @@ const LatestNews = () => {
     return (
         <div className="container mt-4 mb-5 pb-3">
             <div className="sectionTitle">
-                <h2 className="text-center pt-5 mb-5">Latest News & Blog</h2>
+                <h2 className="text-center pt-5 mb-5 section-title">Latest News & Blog</h2>
             </div>
             <div className="row row-cols-1 row-cols-md-3 g-4 mt-3">
                 <div className="col">

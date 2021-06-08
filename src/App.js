@@ -60,7 +60,7 @@ function App() {
               <Review />
             </PrivateRoute>
             <PrivateRoute path="/admin">
-              <AddService />
+              <Order/>
             </PrivateRoute>
             <PrivateRoute path="/orderList">
               <Order />

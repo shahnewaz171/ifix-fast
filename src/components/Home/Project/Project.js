@@ -8,7 +8,7 @@ const Project = () => {
     return (
         <div className="container mt-5 mb-5 pb-4">
             <div className="sectionTitle">
-                <h2 className="text-center pt-5 mb-5 section-title" id="projects">Projects</h2>
+                <h2 className="text-center pt-5 mb-5 section-title">Projects</h2>
             </div>
             <div className="row row-cols-1 row-cols-md-3 g-4 mt-4">
                 <div className="col">

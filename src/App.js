@@ -15,6 +15,10 @@ import ManageServices from "./components/Dashboard/Admin/ManageServices/ManageSe
 import EditService from "./components/Dashboard/Admin/EditService/EditService";
 import './App.css';
 import ScrollToTop from "./components/Shared/ScrollToTop/ScrollToTop";
+import Services from "./components/Home/Services/Services";
+import Footer from "./components/Shared/Footer/Footer";
+import Project from "./components/Home/Project/Project";
+import Contact from "./components/Home/Contact/Contact";
 
 export const UserContext = createContext();
 
@@ -63,6 +67,21 @@ function App() {
             </PrivateRoute>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/services">
+              <Navbar />
+              <Services />
+              <Footer />
+            </Route>
+            <Route path="/projects">
+              <Navbar />
+              <Project />
+              <Footer />
+            </Route>
+            <Route path="/contact">
+              <Navbar />
+              <Contact />
+              <Footer />
             </Route>
           </Switch>
       </Router>

@@ -25,3 +25,13 @@
     padding-bottom: .2rem !important;
     box-shadow: 4px 4px 4px #efeeee;
 }
+
+@media only screen and (min-width: 992px){
+    .nav-link-active::after{
+        content: "";
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color:#17a2b8;
+    }
+}

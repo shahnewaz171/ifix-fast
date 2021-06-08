@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { UserContext } from '../../../App';
 import logo from '../../../images/logo.png';
 import './Navbar.css';
@@ -44,13 +44,13 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" style={{marginTop: loggedInUser.email ? '1.3rem': ''}}>
                     <ul className="navbar-nav ">
                         <li className="nav-item">
-                            <Link to="#" className="nav-link me-4">Home</Link>
+                            <NavLink to="/" exact activeClassName="nav-link-active" className="nav-link me-4">Home</NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link to="#" className="nav-link me-4">About us</Link>
+                            <NavLink to="/services" activeClassName="nav-link-active" className="nav-link me-4">Services</NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link to="projects" className="nav-link me-4">Projects</Link>
+                            <NavLink to="/projects" activeClassName="nav-link-active" className="nav-link me-4">Projects</NavLink>
                         </li>
                         {!isAdmin && 
                             <li className="nav-item">
@@ -58,7 +58,7 @@ const Navbar = () => {
                             </li>
                         }
                         <li className="nav-item">
-                            <Link to="#" className="nav-link me-4">Contact</Link>
+                            <NavLink to="/contact" activeClassName="nav-link-active" className="nav-link me-4">Contact</NavLink>
                         </li>
                         {isAdmin && 
                             <li className="nav-item">

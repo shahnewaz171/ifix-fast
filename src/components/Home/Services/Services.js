@@ -9,7 +9,7 @@ const Services = () => {
     const [loading, setLoading] = useState(false);
 
     const ViewMoreServices =  () => {
-        setVisible(previousLeague => previousLeague + 3)
+        setVisible(previousLeague => previousLeague + 3);
     };
 
     useEffect(() => {

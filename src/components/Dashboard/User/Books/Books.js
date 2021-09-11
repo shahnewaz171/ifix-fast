@@ -13,7 +13,7 @@ const Books = () => {
             setBookings(data);
         })
     }, [loggedInUser.email])
-    console.log(bookings);
+    // console.log(bookings);
 
     return (
         <div>

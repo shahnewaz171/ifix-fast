@@ -16,7 +16,7 @@ const EditService = () => {
         const price = data.price;
         const description = data.description;
         const service = {editId, title, price, description}
-        console.log(service);
+        // console.log(service);
 
         fetch(`https://powerful-brushlands-39960.herokuapp.com/update/${editId}`, {
             method: 'PATCH',
@@ -26,7 +26,7 @@ const EditService = () => {
             body: JSON.stringify(service)
         })
         .then( data => {
-            console.log('updated');
+            // console.log('updated');
             setOrderSuccess(true);
         })
     };

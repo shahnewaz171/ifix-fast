@@ -8,13 +8,13 @@ const ManageServicesList = (props) => {
     const {title, price, description, _id} = props.service;
 
     const deleteService = (id) => {
-        console.log(id);
+        // console.log(id);
         fetch(`https://powerful-brushlands-39960.herokuapp.com/deleteService/${id}`, {
             method: 'DELETE',
         })
         .then(res => res.json())
         .then(result => {
-            console.log('Delete successfully', result);
+            // console.log('Delete successfully', result);
         })
     }
     return (

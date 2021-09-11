@@ -2,7 +2,7 @@ import React from 'react';
 
 const OrderList = (props) => {
     const {book, status, _id} = props.order;
-    console.log(_id);
+    // console.log(_id);
 
     const handleChange = (_id, event) => {
         const status = event.target.value;
@@ -17,7 +17,7 @@ const OrderList = (props) => {
         })
         .then( data => {
             if(data){
-                console.log('updated');
+                // console.log('updated');
             }
         })
     }

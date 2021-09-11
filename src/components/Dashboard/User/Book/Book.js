@@ -40,11 +40,11 @@ const Book = () => {
         .then(data => {
             if(data){
                 setOrderSuccess(true);
-                console.log(data);
+                // console.log(data);
             }
         })
     }
-    console.log(singleService.title);
+    // console.log(singleService.title);
     
     return (
         <div>

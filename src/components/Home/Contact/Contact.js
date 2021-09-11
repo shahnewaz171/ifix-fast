@@ -10,9 +10,9 @@ const Contact = () => {
     
         emailjs.sendForm('service_200r93a', 'template_p0s2zut', e.target, 'user_hJSU6AMqoIqz90tZfOa1r')
           .then((result) => {
-              console.log(result.text);
+            //   console.log(result.text);
           }, (error) => {
-              console.log(error.text);
+            //   console.log(error.text);
           });
           e.target.reset();
     }

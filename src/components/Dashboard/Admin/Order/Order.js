@@ -21,7 +21,7 @@ const Order = () => {
         .catch(error => alert("Something went wrong!! Please try again later!"))
     }, [])
 
-    console.log(orders);
+    // console.log(orders);
 
     
     return (

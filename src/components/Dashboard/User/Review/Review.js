@@ -14,7 +14,7 @@ const Review = () => {
         const newInfo = { ...info };
         newInfo[e.target.name] = e.target.value;
         setInfo(newInfo);
-        console.log(newInfo);
+        // console.log(newInfo);
     }
 
     const onSubmit = () => {
@@ -25,7 +25,7 @@ const Review = () => {
         formData.append('designation', info.designation);
         formData.append('quote', info.quote);
 
-        console.log(formData);
+        // console.log(formData);
 
         fetch('https://powerful-brushlands-39960.herokuapp.com/addReview', {
             method: 'POST',

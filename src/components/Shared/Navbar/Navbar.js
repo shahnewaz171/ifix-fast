@@ -33,7 +33,7 @@ const Navbar = () => {
     }
     window.addEventListener('scroll', changeBackground);
 
-    console.log(loggedInUser);
+    // console.log(loggedInUser);
 
     return (
         <nav className={navbarAnimation ? "navbar navbar-expand-lg navbar-light bg-light sticky-md-top nav-bg" : "navbar navbar-expand-lg navbar-light bg-light"}>

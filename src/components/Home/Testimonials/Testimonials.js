@@ -55,16 +55,18 @@ const Testimonials = () => {
         <div className="bg-light">
             <div className="container">
                 <div className="sectionTitle">
-                    <h2 className="text-center pt-5 mb-5 section-title">Testimonials</h2>
+                    <h2 className="text-center pt-5 section-title">Testimonials</h2>
                 </div>
-                <div className="mb-5">
-                    <div className="text-center">
-                        {loading && (
-                            <div className="spinner-border text-primary" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </div>
-                        )}
+
+                {loading && (
+                    <div className="text-center my-5">
+                        <div className="spinner-border text-primary" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
                     </div>
+                )}
+
+                <div className="my-5">
                     <Slider {...conditionalSettings}>
                         {
                             testimonialData && testimonialData.map(testimonial => <Testimonial testimonial={testimonial} key={testimonial._id}></Testimonial>)

@@ -12,7 +12,7 @@ const Loading = () => {
     }
     return (
         <div style={loaderStyle}>
-             <Loader type="Bars" color="#0a373e" height={70} width={70} />
+             <Loader type="Puff" color="#0a373e" height={80} width={80} />
         </div>
     );
 };

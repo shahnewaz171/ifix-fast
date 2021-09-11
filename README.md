@@ -23,3 +23,6 @@ This is a complete MERN stack E-commerce website.
 - MongoDB
 
 Backend Repository: [iFix-Fast](https://github.com/shahnewaz171/ifix-fast-server)
+
+# Admin Account
+email: admin@gmail.com pass: admin123

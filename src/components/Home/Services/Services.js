@@ -17,9 +17,11 @@ const Services = () => {
         fetch("https://powerful-brushlands-39960.herokuapp.com/services")
         .then(res => res.json())
         .then(data => {
-            setServices(data);
+           if(data){
+                setLoading(false)
+                setServices(data);
+           }
         })
-        .then(() => setLoading(false))
         .catch(error => alert("Something went wrong!! Please try again later!"))
     }, [])
 
@@ -40,9 +42,10 @@ const Services = () => {
                    allServices.map(service => <Service service={service} key={service._id}></Service>)
                }
             </div>
-            <div className="mt-4 pt-2 text-center pb-5">
+            {services.length && visible === allServices.length ? <div className="mt-4 pt-2 text-center pb-5">
                 <button onClick={ViewMoreServices} className="btn btn-style fw-bold">Explore More</button>
-            </div>
+            </div> : ""
+            }
         </div>
     );
 };

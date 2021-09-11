@@ -28,8 +28,7 @@
 
 /* User avater image circle style */
 .header-user .dropdown-menu {
-    border-color: #eee;
-    /* margin-top: -3px; */
+    margin-top: 7px;
     right: 0;
     left: auto !important;
     z-index: 1051;

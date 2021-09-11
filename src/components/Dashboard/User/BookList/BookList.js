@@ -3,6 +3,7 @@ import './BookList.css';
 
 const BookList = (props) => {
     const {service, status} = props.book;
+    
     return (
         <div className="col-12 col-md-4 mb-4">
             <div className="bg-white service-shadow border-radius pad2">

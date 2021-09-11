@@ -84,10 +84,11 @@ const Book = () => {
                         <form action="" onSubmit={handleSubmit(onSubmit)}>
                             <div className="bg-white border-radius">
                                 <div className="row mx-lg-2 pad">
-                                    <div className="col-12 form-group mb-4">
-                                        <input name="name" defaultValue={userInfo.name} ref={register({ required: true })} className="form-control" readOnly />
+                                    {userInfo.name && <div className="col-12 form-group mb-4">
+                                        <input name="name" defaultValue={userInfo.name } ref={register({ required: true })} className="form-control" readOnly />
                                         {errors.name && <span className="text-danger">This field is required</span>}
                                     </div>
+                                    }
 
                                     <div className="col-12 form-group mb-4">
                                         <input name="email" defaultValue={userInfo.email} type="email" ref={register({ required: true })} className="form-control" readOnly />

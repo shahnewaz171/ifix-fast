@@ -32,7 +32,7 @@ const Books = () => {
             <div className="book-info">
                 <div className="mt-5 mx-4">
                     {
-                        bookings.length  <=  0 && 
+                        bookings.length  <  0 && 
                         <div className="alert alert-success alert-dismissible fade show orderSuccess ms-4" role="alert">
                             You have no order placed yet.
                             <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

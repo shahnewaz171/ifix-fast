@@ -12,7 +12,7 @@ const Loading = () => {
     }
     return (
         <div style={loaderStyle}>
-             <Loader type="Grid" color="#0a373e" height={60} width={60} />
+             <Loader type="Bars" color="#0a373e" height={70} width={70} />
         </div>
     );
 };

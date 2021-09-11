@@ -6,12 +6,14 @@ import logo from '../../images/logo.png';
 import { useForm } from 'react-hook-form';
 import { storeUserInfo, createUserWithEmailAndPassword, handleFacebookSignIn, handleGoogleSignIn, initializeLoginFramework, signInWithEmailAndPassword } from './loginManager';
 import './Login.css';
+import Loading from '../Loading';
 
 initializeLoginFramework();
 
 
 const Login = () => {
     const [newUser, setNewUser] = useState(false);
+    const [loading, setLoading] = useState(false);
     const { register, handleSubmit, watch, errors } = useForm();
     const password = useRef();
     password.current = watch('password');
@@ -32,14 +34,20 @@ const Login = () => {
     const googleSignIn = () => {
         handleGoogleSignIn()
         .then(res => {
-            history.replace(from);
+           if(res){
+                setLoading(true);
+                history.replace(from);
+           }
         })
     }
 
     const facebookSignIn = () => {
         handleFacebookSignIn()
         .then(res => {
-            history.replace(from);
+            if(res){
+                setLoading(true);
+                history.replace(from);
+            }
         })
     }
     
@@ -64,13 +72,15 @@ const Login = () => {
             signInWithEmailAndPassword(user.email, user.password)
             .then( res => {
                 storeUserInfo(res);
+                setLoading(true);
                 history.replace(from);
             })
         }
     }
     
     return (
-        <div>    
+        <>    
+            {loading && <Loading />}
             <div className="pt-3">
                 <div className="container">
                     <Link to="/" className="navbar-brand web-name">
@@ -167,7 +177,7 @@ const Login = () => {
                         </div>
                     </div>
             </div>
-        </div>    
+        </>    
     );
 };
 

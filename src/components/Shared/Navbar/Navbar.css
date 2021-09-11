@@ -31,7 +31,7 @@
     border-color: #eee;
     /* margin-top: -3px; */
     right: 0;
-    left: auto;
+    left: auto !important;
     z-index: 1051;
     min-width: 16rem;
 }
@@ -93,10 +93,10 @@
 @media only screen and (min-width: 992px){
     .nav-link-active::after{
         content: "";
-        display: block;
+        display: block !important;
         height: 1px;
         width: 100%;
-        background-color:#17a2b8;
+        background-color:#17a2b8 !important;
     }
     .small-device-avater{
         display: none !important;
@@ -104,6 +104,9 @@
 }
 @media only screen and (max-width: 991px){
     .large-device-avater{
-        display: none;
+        display: none !important;
+    }
+    .smallDevice-block{
+        display: block !important;
     }
 }

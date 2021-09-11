@@ -12,24 +12,24 @@
     padding-top: 15px;
 }
 .btn-style{
-    background-color: #17a2b8;
-    border-color: #17a2b8;
-    color: white;
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+    color: white !important;
     transition: all .3s;
 }
 .btn-style:hover{
-    background-color: #138496;
-    border-color: #117a8b;
-    color: #fff;
+    background-color: #138496 !important;
+    border-color: #117a8b !important;
+    color: #fff !important;
 }
 .link-span{
     cursor: pointer;
     text-decoration: underline;
-    color: #117a8b;
+    color: #117a8b !important;
     transition: all .3s;
 }
 .link-span:hover{
-    color: #117a8b;
+    color: #117a8b !important;
 }
 .extra-info{
     display: block;
@@ -50,7 +50,7 @@
 }
 .btn-facebook{
     width: 75%;
-    border: 1px solid rgb(196, 194, 194);
+    border: 1px solid rgb(196, 194, 194) !important;
     border-radius: 30px;
 }
 .forget{
@@ -58,7 +58,7 @@
     text-decoration: underline;
 }
 .form-group p{
-    color: rgb(185, 14, 14);
+    color: rgb(185, 14, 14) !important;
 }
 .success-alert{
     color: green !important;
@@ -69,8 +69,8 @@
 }
 .register-btn{
     color: white;
-    background-color: #17a2b8;
-    border-color: #17a2b8;
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
     transition: all .3s;
     margin: 0 10px;
     font-weight: 600;

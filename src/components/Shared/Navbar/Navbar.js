@@ -41,7 +41,7 @@ const Navbar = () => {
                 <Link to="#" className="navbar-brand">
                     <img src={logo} className="img-fluid" alt="logo"/>
                 </Link>
-                {loggedInUser.email && <div className="nav-link dropdown header-user user-menu d-block ms-auto small-device-avater">
+                {loggedInUser.email && <div className="nav-link dropdown header-user user-menu smallDevice-block ms-auto small-device-avater">
                         <div className="dropdown-toggle box-30 cursor rounded-circle" id="dropdownMenuItem1" data-bs-toggle="dropdown" aria-expanded="false">
                             {loggedInUser.image == null ?
                                 <img src={UserAvatar} className="img-circle"  alt=""/> :

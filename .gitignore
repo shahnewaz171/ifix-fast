@@ -8,7 +8,8 @@ firebase.config.js
 /node_modules
 /.pnp
 .pnp.js
-
+/firebase-debug.log
+.firebase/hosting.YnVpbGQ.cache
 # testing
 /coverage
 

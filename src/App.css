@@ -50,3 +50,6 @@
     margin-right: auto;
     margin-top: 0.6rem;
 }
+.Toastify__toast-theme--light{
+  color: #8e6f4e !important;
+}

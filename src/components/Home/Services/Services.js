@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Services.css';
 import Service from '../Service/Service';
+import axios from 'axios';
 
 const Services = () => {
     const [services, setServices] = useState([]);
@@ -14,15 +15,18 @@ const Services = () => {
 
     useEffect(() => {
         setLoading(true)
-        fetch("https://powerful-brushlands-39960.herokuapp.com/services")
-        .then(res => res.json())
-        .then(data => {
-           if(data){
+        let mounted = true
+        axios.get("https://powerful-brushlands-39960.herokuapp.com/services")
+        .then(res=> {
+           if(mounted){
                 setLoading(false)
-                setServices(data);
+                setServices(res.data);
            }
         })
-        .catch(error => alert("Something went wrong!! Please try again later!"))
+        .catch( error => "" )
+        return () => {
+            mounted = false
+        }
     }, [])
 
     return (
@@ -32,14 +36,14 @@ const Services = () => {
             </div>
             <div className="text-center mt-4">
                     {loading && (
-                        <div class="spinner-border text-primary" role="status">
-                            <span class="visually-hidden">Loading...</span>
+                        <div className="spinner-border text-primary" role="status">
+                            <span className="visually-hidden">Loading...</span>
                         </div>
                     )}
                 </div>
             <div className="row">
                {
-                   allServices.map(service => <Service service={service} key={service._id}></Service>)
+                   allServices && allServices.map(service => <Service service={service} key={service._id}></Service>)
                }
             </div>
             {services.length && visible === allServices.length ? <div className="mt-4 pt-2 text-center pb-5">

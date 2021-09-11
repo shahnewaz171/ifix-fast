@@ -16,6 +16,7 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "aos": "^2.3.4",
+    "axios": "^0.21.4",
     "emailjs": "^3.4.0",
     "emailjs-com": "^2.6.4",
     "firebase": "^8.3.1",
@@ -32,6 +33,7 @@
     "react-scripts": "4.0.3",
     "react-scroll": "^1.8.2",
     "react-select": "^4.3.0",
+    "react-toastify": "^8.0.2",
     "react-use": "^17.2.4",
     "styled-components": "^5.2.3",
     "web-vitals": "^1.1.1"

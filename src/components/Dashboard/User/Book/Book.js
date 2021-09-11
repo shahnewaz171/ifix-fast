@@ -1,33 +1,41 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import ProcessPayment from '../ProcessPayment/ProcessPayment';
 import Sidebar from '../Sidebar/Sidebar';
 import './Book.css';
-import { UserContext } from '../../../../App';
+import axios from 'axios';
 
 const Book = () => {
-    const {bookId} = useParams();
+    const { bookId } = useParams();
     const [singleService, setSingleService] = useState([]);
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [orderSuccess, setOrderSuccess] = useState(false);
     const { register, handleSubmit, errors } = useForm();
     const [bookingData, setBookingData] = useState(null);
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+
 
     useEffect(() => {
-        fetch("https://powerful-brushlands-39960.herokuapp.com/service/"+ bookId)
-        .then(res => res.json())
-        .then(data => {
-            setSingleService(data);
-        })
+        if (bookId) {
+            axios.get(`https://powerful-brushlands-39960.herokuapp.com/service/${bookId}`)
+             .then(res => {
+                if (res) {
+                    setSingleService(res.data);
+                }
+            })
+        }
+        else {
+            console.log('');
+        }
     }, [bookId])
 
-    const onSubmit = data => {
+    const onSubmit = (data) => {
         setBookingData(data);
+        console.log(data)
     };
 
-    const handlePaymentSuccess = paymentId => {
-        const bookingDetails = {...loggedInUser, service: singleService, book: bookingData, bookingTime: new Date(), paymentId, status: 'Pending'};
+    const handlePaymentSuccess = (paymentId) => {
+        const bookingDetails = { ...userInfo, service: singleService, book: bookingData, bookingTime: new Date(), paymentId, status: 'Pending' };
 
         fetch("https://powerful-brushlands-39960.herokuapp.com/addBooking", {
             method: "POST",
@@ -38,14 +46,12 @@ const Book = () => {
         })
         .then(res => res.json())
         .then(data => {
-            if(data){
+            if (data) {
                 setOrderSuccess(true);
-                // console.log(data);
             }
         })
     }
-    // console.log(singleService.title);
-    
+
     return (
         <div>
             {
@@ -54,7 +60,7 @@ const Book = () => {
             <div className="title">
                 <h3 className="title-name">Book</h3>
                 {
-                    loggedInUser.email ? <h5>{loggedInUser.name == null ? loggedInUser.email : loggedInUser.name}</h5> : ''
+                    userInfo == null ? "" : userInfo.email ? <h5>{userInfo.name == null ? userInfo.email : userInfo.name}</h5> : ''
                 }
             </div>
 
@@ -65,46 +71,47 @@ const Book = () => {
                         <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </div>}
-                
-                {singleService.title == null && <div className="mx-5 mt-4">
+
+                {bookId === undefined && <div className="mx-5 mt-4">
                     <div className="alert alert-warning alert-dismissible fade show orderSuccess" role="alert">
-                         Please, go to the home page and select a service then you can book a service. Thank you!
+                        Please, go to the home page and select a service then you can book a service. Thank you!
                         <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </div>}
 
                 {singleService.title != null && <div className="mx-5 mt-4 width">
-                    {!orderSuccess && <div style={{display: bookingData ? 'none': 'block'}}>
+                    {!orderSuccess && <div style={{ display: bookingData ? 'none' : 'block' }}>
                         <form action="" onSubmit={handleSubmit(onSubmit)}>
                             <div className="bg-white border-radius">
                                 <div className="row mx-lg-2 pad">
                                     <div className="col-12 form-group mb-4">
-                                        <input name="name" defaultValue={loggedInUser.name}  ref={register({ required: true })} className="form-control"/>
+                                        <input name="name" defaultValue={userInfo.name} ref={register({ required: true })} className="form-control" readOnly />
                                         {errors.name && <span className="text-danger">This field is required</span>}
                                     </div>
 
                                     <div className="col-12 form-group mb-4">
-                                        <input name="email" defaultValue={loggedInUser.email} type="email" ref={register({ required: true })} className="form-control"/>
+                                        <input name="email" defaultValue={userInfo.email} type="email" ref={register({ required: true })} className="form-control" readOnly />
                                         {errors.email && <span className="text-danger">This field is required</span>}
                                     </div>
                                     <div className="col-12 form-group mb-4">
-                                        <input name="service" defaultValue={singleService.title} type="text" ref={register({ required: true })} className="form-control"/>
+                                        <input name="service" defaultValue={singleService.title} type="text" ref={register({ required: true })} className="form-control" readOnly />
                                         {errors.service && <span className="text-danger">This field is required</span>}
                                     </div>
                                     <div>
                                         <button className="mt-4 btn btn-style px-4 submitBtn" type="submit">Proceed to pay</button>
                                     </div>
-                                </div>      
+                                </div>
                             </div>
                         </form>
                     </div>}
-                    
-                    {!orderSuccess && <div style={{display: bookingData ? 'block': 'none'}}>
+
+                    {!orderSuccess && <div style={{ display: bookingData ? 'block' : 'none' }}>
                         <h2 className="mb-5 mt-3">Payment Method</h2>
                         <ProcessPayment handlePayment={handlePaymentSuccess}></ProcessPayment>
                     </div>}
                 </div>}
             </div>
+
         </div>
     );
 };

@@ -1,19 +1,16 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import logo from '../../images/logo.png';
 import { useForm } from 'react-hook-form';
-import { createUserWithEmailAndPassword, handleFacebookSignIn, handleGoogleSignIn, initializeLoginFramework, signInWithEmailAndPassword } from './loginManager';
+import { storeUserInfo, createUserWithEmailAndPassword, handleFacebookSignIn, handleGoogleSignIn, initializeLoginFramework, signInWithEmailAndPassword } from './loginManager';
 import './Login.css';
-import { UserContext } from '../../App';
 
 initializeLoginFramework();
 
 
 const Login = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    // console.log(loggedInUser);
     const [newUser, setNewUser] = useState(false);
     const { register, handleSubmit, watch, errors } = useForm();
     const password = useRef();
@@ -35,8 +32,6 @@ const Login = () => {
     const googleSignIn = () => {
         handleGoogleSignIn()
         .then(res => {
-            setLoggedInUser(res);
-            setUser(res);
             history.replace(from);
         })
     }
@@ -44,14 +39,11 @@ const Login = () => {
     const facebookSignIn = () => {
         handleFacebookSignIn()
         .then(res => {
-            setLoggedInUser(res);
-            setUser(res);
             history.replace(from);
         })
     }
     
     const handleBlur = (e) => {
-        // console.log(e.target.value);
         let isFieldValid = true;
 
         if(isFieldValid){
@@ -59,7 +51,6 @@ const Login = () => {
             newUserInfo[e.target.name] = e.target.value;
             setUser(newUserInfo);
         }
-        console.log(e.target.value);
     }
 
     const onSubmit = (e) => {
@@ -69,11 +60,10 @@ const Login = () => {
                 setUser(res);
             })
         }
-        if(!newUser && user.email && user.password){
+       else if(!newUser && user.email && user.password){
             signInWithEmailAndPassword(user.email, user.password)
             .then( res => {
-                setUser(res);
-                setLoggedInUser(res);
+                storeUserInfo(res);
                 history.replace(from);
             })
         }

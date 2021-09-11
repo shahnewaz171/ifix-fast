@@ -1,11 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { UserContext } from '../../../../App';
 import Sidebar from '../../Admin/Sidebar/Sidebar';
 
 
 const MakeAdmin = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const { register, handleSubmit, errors } = useForm();
     const [info, setInfo] = useState({});
     const [orderSuccess, setOrderSuccess] = useState(false);
@@ -37,6 +35,8 @@ const MakeAdmin = () => {
         })
     }
 
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+
     return (
         <div>
             {
@@ -45,7 +45,7 @@ const MakeAdmin = () => {
              <div className="title">
                 <h3 className="title-name">Make Admin</h3>
                 {
-                    loggedInUser.email ? <h5>{loggedInUser.name == null ? loggedInUser.email : loggedInUser.name}</h5> : ''
+                    userInfo == null ? "" : userInfo.email ? <h5>{userInfo.name == null ? userInfo.email : userInfo.name}</h5> : ''
                 }
             </div>
             <div className="book-info">

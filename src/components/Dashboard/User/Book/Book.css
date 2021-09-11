@@ -3,11 +3,12 @@
 }
 .book-info{
     background: #f2f2f3;
-    height: 545px;
+    height: 100vh;
     display: flex;
     justify-content: flex-start;
     width: 81.7%;
     margin-left: auto;
+    padding-bottom: 2rem;
 }
 .submitBtn{
     margin-left: auto;

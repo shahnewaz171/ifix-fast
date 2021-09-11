@@ -1,19 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
-import { UserContext } from '../../../../App';
 import BookList from '../BookList/BookList';
+import axios from 'axios';
+
+
 const Books = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [bookings, setBookings] = useState([]);
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
     useEffect(() => {
-        fetch('https://powerful-brushlands-39960.herokuapp.com/bookings?email='+loggedInUser.email)
-        .then(res => res.json())
-        .then(data => {
-            setBookings(data);
+        axios.get(`https://powerful-brushlands-39960.herokuapp.com/bookings?email=${userInfo.email}`)
+        .then(res => {
+            setBookings(res.data);
         })
-    }, [loggedInUser.email])
-    // console.log(bookings);
+        .catch(err => "" )
+    }, [userInfo])
 
     return (
         <div>
@@ -24,14 +25,14 @@ const Books = () => {
             <div className="title">
                 <h3 className="title-name">Service List</h3>
                 {
-                    loggedInUser.email ? <h5>{loggedInUser.name == null ? loggedInUser.email : loggedInUser.name}</h5> : ''
+                    userInfo == null ? "" : userInfo.email ? <h5>{userInfo.name == null ? userInfo.email : userInfo.name}</h5> : ''
                 }
             </div>
 
             <div className="book-info">
                 <div className="mt-5 mx-4">
                     {
-                        bookings.length === 0 && loggedInUser.email && 
+                        bookings.length  <  0 && 
                         <div className="alert alert-success alert-dismissible fade show orderSuccess" role="alert">
                             You have no order placed yet.
                             <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

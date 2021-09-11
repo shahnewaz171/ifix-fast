@@ -4,19 +4,18 @@ import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
 import './Testimonials.css';
 import Carousel from "react-elastic-carousel";
-import Item from './Item';
+import axios from 'axios';
 
 
 const Testimonials = () => {
     const [testimonialData, setTestimonialData] = useState([]);
 
     useEffect(() => {
-        fetch("https://powerful-brushlands-39960.herokuapp.com/reviews")
-        .then(res => res.json())
-        .then(data => {
-            setTestimonialData(data);
+        axios.get("https://powerful-brushlands-39960.herokuapp.com/reviews")
+        .then(res => {
+            setTestimonialData(res.data);
         })
-        .catch(error => alert("Something went wrong!! Please try again later!"))
+        .catch(error => "" )
     }, [])
 
 
@@ -36,7 +35,7 @@ const Testimonials = () => {
                 <div className="mb-5">
                 <Carousel breakPoints={breakPoints}>
                     { 
-                        testimonialData.map(testimonial => <Testimonial testimonial={testimonial} key={testimonial._id}></Testimonial>)
+                        testimonialData && testimonialData.map(testimonial => <Testimonial testimonial={testimonial} key={testimonial._id}></Testimonial>)
                     }
                     
                 </Carousel>

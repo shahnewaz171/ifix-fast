@@ -1,64 +1,66 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../../../App';
-import Loading from '../../../Loading';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../../Admin/Sidebar/Sidebar';
 import OrderList from '../OrderList/OrderList';
 import './Order.css';
+import axios from 'axios';
 
 const Order = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         setLoading(true);
-        fetch("https://powerful-brushlands-39960.herokuapp.com/orders")
-        .then(res => res.json())
-        .then(data => {
-            setOrders(data);
-        })
-        .then(() => setLoading(false))
-        .catch(error => alert("Something went wrong!! Please try again later!"))
+        axios.get("https://powerful-brushlands-39960.herokuapp.com/orders")
+            .then(res => {
+                if (res) {
+                    setLoading(false)
+                    setOrders(res.data);
+                }
+            })
+            .catch(error => "")
     }, [])
 
-    // console.log(orders);
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
-    
     return (
         <div>
             {
-               <Sidebar></Sidebar>
+                <Sidebar></Sidebar>
             }
-             <div className="title">
+            <div className="title">
                 <h3 className="title-name">Order List</h3>
                 {
-                    loggedInUser.email ? <h5>{loggedInUser.name == null ? loggedInUser.email : loggedInUser.name}</h5> : ''
+                    userInfo == null ? "" : userInfo.email ? <h5>{userInfo.name == null ? userInfo.email : userInfo.name}</h5> : ''
                 }
             </div>
             <div className="book-info">
-                
                 <div className="pd-description mx-lg-5 mt-4">
-                    <div className="text-center">
-                        {loading && (
-                            <Loading />
-                        )}
-                    </div>
-                    <table className="table pdList">
-                        <thead>
-                            <tr className="table-head">
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Email ID</th>
-                                <th scope="col">Service</th>
-                                <th scope="col">Pay With</th>
-                                <th scope="col">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                orders.map(order => <OrderList order={order} key={order._id}></OrderList>)
-                            }
-                        </tbody>
-                    </table>
+                    {loading && (
+                        <div className="text-center mt-5">
+                            <div class="spinner-border text-success" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    )}
+
+                    {orders.length > 0 &&
+                        <table className="table pdList">
+                            <thead>
+                                <tr className="table-head">
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email ID</th>
+                                    <th scope="col">Service</th>
+                                    <th scope="col">Pay With</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    orders && orders.map(order => <OrderList order={order} key={order._id}></OrderList>)
+                                }
+                            </tbody>
+                        </table>
+                    }
                 </div>
             </div>
         </div>

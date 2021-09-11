@@ -1,15 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Redirect, Route } from 'react-router';
-import { UserContext } from '../../App';
 
 const PrivateRoute = ({ children, ...rest }) => {
-    // eslint-disable-next-line no-unused-vars
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const userInfo = JSON.parse(localStorage.getItem('userInfo')) || {};
+
     return (
         <Route
             {...rest}
             render={({ location }) =>
-                loggedInUser.email ? (
+                userInfo.email ? (
                 children
                 ) : (
                 <Redirect

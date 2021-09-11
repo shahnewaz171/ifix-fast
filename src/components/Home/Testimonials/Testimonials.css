@@ -47,3 +47,7 @@
 .rec-carousel{
     height: 322px !important;
 }
+.slick-dots li button:before{
+    font-size: 11px !important;
+    top: -15px !important;
+}

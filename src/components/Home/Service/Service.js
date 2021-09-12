@@ -70,17 +70,15 @@ const Service = ({ service }) => {
                         </div>
                         <div className="d-flex justify-content-between pt-2" data-aos="zoom-in">
                             <h6 className="service-price mt-2">${price}</h6>
-                            <a onClick={goToBookPage} href="#id" >
-                                <button className="btn btn-style px-3 text-white" style={{ borderRadius: '25px' }}>
-                                    <FontAwesomeIcon icon={faShoppingCart} />
-                                    <span className="ms-1">Book</span>
-                                </button>
-                            </a>
+                            <button onClick={goToBookPage} className="btn btn-style px-3 text-white" style={{ borderRadius: '25px' }}>
+                                <FontAwesomeIcon icon={faShoppingCart} />
+                                <span className="ms-1">Book</span>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </>
     );
 };

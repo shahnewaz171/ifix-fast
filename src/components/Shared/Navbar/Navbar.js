@@ -12,19 +12,21 @@ const Navbar = () => {
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
         let mounted = true;
-        fetch('https://powerful-brushlands-39960.herokuapp.com/isAdmin', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ email: userInfo.email })
-        })
+        if (userInfo != null) {
+            fetch('https://powerful-brushlands-39960.herokuapp.com/isAdmin', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ email: userInfo.email })
+            })
             .then(res => res.json())
             .then(data => {
                 if (mounted) {
                     setIsAdmin(data)
                 }
             })
+        }
         return () => {
             mounted = false
         }

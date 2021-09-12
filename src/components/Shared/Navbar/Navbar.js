@@ -8,25 +8,25 @@ const Navbar = () => {
     const [isAdmin, setIsAdmin] = useState(false);
     const history = useHistory();
 
+
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-        try {
-            fetch('https://powerful-brushlands-39960.herokuapp.com/isAdmin', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify({ email: userInfo.email })
-            })
+        let mounted = true;
+        fetch('https://powerful-brushlands-39960.herokuapp.com/isAdmin', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ email: userInfo.email })
+        })
             .then(res => res.json())
             .then(data => {
-                if (data) {
+                if (mounted) {
                     setIsAdmin(data)
                 }
             })
-        }
-        catch(err){
-            console.log('')
+        return () => {
+            mounted = false
         }
     }, [])
 

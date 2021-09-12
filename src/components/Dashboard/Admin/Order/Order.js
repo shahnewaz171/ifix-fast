@@ -37,8 +37,8 @@ const Order = () => {
                 <div className="pd-description mx-lg-5 mt-4">
                     {loading && (
                         <div className="text-center mt-5">
-                            <div class="spinner-border text-success" role="status">
-                                <span class="visually-hidden">Loading...</span>
+                            <div className="spinner-border text-success" role="status">
+                                <span className="visually-hidden">Loading...</span>
                             </div>
                         </div>
                     )}

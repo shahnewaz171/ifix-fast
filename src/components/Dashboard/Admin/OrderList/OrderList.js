@@ -29,7 +29,7 @@ const OrderList = (props) => {
             <td>Credit Card</td>
             <td>
                 <select name='option' onChange={(event) => handleChange(_id, event)}>
-                    <option selected hidden>{status}</option>
+                    <option defaultValue={status} hidden>{status}</option>
                     <option value="Pending">Pending</option>
                     <option value="On going">On going</option>
                     <option value="Done">Done</option>

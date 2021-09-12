@@ -68,7 +68,7 @@ const Service = ({ service }) => {
                             <h3 className="service-title mb-3">{title}</h3>
                             <p>{description}</p>
                         </div>
-                        <div className="d-flex justify-content-between pt-2" data-aos="zoom-in">
+                        <div className="d-flex justify-content-between pt-2">
                             <h6 className="service-price mt-2">${price}</h6>
                             <button onClick={goToBookPage} className="btn btn-style px-3 text-white" style={{ borderRadius: '25px' }}>
                                 <FontAwesomeIcon icon={faShoppingCart} />

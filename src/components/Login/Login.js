@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import logo from '../../images/logo.png';
 import { useForm } from 'react-hook-form';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { storeUserInfo, createUserWithEmailAndPassword, handleFacebookSignIn, handleGoogleSignIn, initializeLoginFramework, signInWithEmailAndPassword } from './loginManager';
 import './Login.css';
 import Loading from '../Loading';
@@ -33,22 +35,22 @@ const Login = () => {
 
     const googleSignIn = () => {
         handleGoogleSignIn()
-            .then(res => {
-                if (res) {
-                    setLoading(true);
-                    history.replace(from);
-                }
-            })
+        .then(res => {
+            if (res) {
+                setLoading(true);
+                history.replace(from);
+            }
+        })
     }
 
     const facebookSignIn = () => {
         handleFacebookSignIn()
-            .then(res => {
-                if (res) {
-                    setLoading(true);
-                    history.replace(from);
-                }
-            })
+        .then(res => {
+             if (res) {
+                setLoading(true);
+                history.replace(from);
+            }
+        })
     }
 
     const handleBlur = (e) => {
@@ -64,17 +66,24 @@ const Login = () => {
     const onSubmit = (e) => {
         if (newUser && user.email && user.password) {
             createUserWithEmailAndPassword(user.email, user.password)
-                .then(res => {
+            .then(res => {
+                if (res) {
                     setUser(res);
-                })
+                    toast.success("Account created successfully!", {
+                        position: toast.POSITION.TOP_CENTER,
+                        autoClose: 2000
+                    });
+                    setNewUser(!newUser);
+                }
+            })
         }
         else if (!newUser && user.email && user.password) {
             signInWithEmailAndPassword(user.email, user.password)
-                .then(res => {
-                    storeUserInfo(res);
-                    setLoading(true);
-                    history.replace(from);
-                })
+            .then(res => {
+                storeUserInfo(res);
+                setLoading(true);
+                history.replace(from);
+            })
         }
     }
 
@@ -188,6 +197,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </>
     );
 };

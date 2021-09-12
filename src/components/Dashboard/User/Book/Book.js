@@ -31,7 +31,6 @@ const Book = () => {
 
     const onSubmit = (data) => {
         setBookingData(data);
-        console.log(data)
     };
 
     const handlePaymentSuccess = (paymentId) => {

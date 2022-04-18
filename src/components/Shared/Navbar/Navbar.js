@@ -6,13 +6,13 @@ import './Navbar.css';
 
 const Navbar = () => {
     const [isAdmin, setIsAdmin] = useState(false);
+    const [navbarAnimation, setNavbarAnimation] = useState(false);
     const history = useHistory();
 
 
     useEffect(() => {
-        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-        let mounted = true;
-        if (userInfo != null) {
+        const userInfo = JSON.parse(localStorage.getItem('userInfo')) || '';
+        if (userInfo) {
             fetch('https://powerful-brushlands-39960.herokuapp.com/isAdmin', {
                 method: 'POST',
                 headers: {
@@ -22,17 +22,15 @@ const Navbar = () => {
             })
             .then(res => res.json())
             .then(data => {
-                if (mounted) {
+                if (data) {
                     setIsAdmin(data)
                 }
             })
-        }
-        return () => {
-            mounted = false
+            .catch(err => {
+                console.error(err.response);
+            })
         }
     }, [])
-
-    const [navbarAnimation, setNavbarAnimation] = useState(false);
 
     const changeBackground = () => {
         if (window.scrollY >= 80) {
@@ -62,13 +60,13 @@ const Navbar = () => {
                     <div className="dropdown-toggle box-30 cursor rounded-circle" id="dropdownMenuItem1" data-bs-toggle="dropdown" aria-expanded="false">
                         {userInfo.image == null ?
                             <img src={UserAvatar} className="img-circle" alt="" /> :
-                            <img src={userInfo.image} className="img-circle" alt="" />
+                            <img src={userInfo?.image} className="img-circle" alt="" />
                         }
                     </div>
                     <div className="dropdown-menu rounded-0" aria-labelledby="dropdownMenuItem1">
                         <li className="d-flex justify-content-center align-items-center flex-column mt-2 mb-1">
-                            <h6>{userInfo.name}</h6>
-                            <h6>{userInfo.email}</h6>
+                            <h6>{userInfo?.name}</h6>
+                            <h6>{userInfo?.email}</h6>
                             <button onClick={logOut} className="btn btn-outline-info py-0">Logout</button>
                         </li>
                     </div>
@@ -111,14 +109,14 @@ const Navbar = () => {
                     {userInfo && <div className="nav-link pt-0 pb-0 px-2 dropdown header-user user-menu large-device-avater">
                         <div className="dropdown-toggle box-30 cursor rounded-circle" id="dropdownMenuItem1" data-bs-toggle="dropdown" aria-expanded="false">
                             {userInfo.image != null ?
-                                <img src={userInfo.image} className="img-circle" alt="" /> :
+                                <img src={userInfo?.image} className="img-circle" alt="" /> :
                                 <img src={UserAvatar} className="img-circle" alt="" />
                             }
                         </div>
                         <div className="dropdown-menu rounded-0" aria-labelledby="dropdownMenuItem1">
                             <li className="d-flex justify-content-center align-items-center flex-column mt-2 mb-1">
-                                <h6>{userInfo.name}</h6>
-                                <h6>{userInfo.email}</h6>
+                                <h6>{userInfo?.name}</h6>
+                                <h6>{userInfo?.email}</h6>
                                 <button onClick={logOut} className="btn btn-outline-info py-0">Logout</button>
                             </li>
                         </div>

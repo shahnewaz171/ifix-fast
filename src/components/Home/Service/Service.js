@@ -13,18 +13,14 @@ const Service = ({ service }) => {
     const { title, price, description, img, _id } = service;
 
     useEffect(() => {
-        AOS.init({ duration: 1000 })
-    }, [])
-
-    useEffect(() => {
-        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-        try {
+        const userInfo = JSON.parse(localStorage.getItem('userInfo')) || '';
+        if((userInfo) && (userInfo?.email)) {
             fetch('https://powerful-brushlands-39960.herokuapp.com/isAdmin', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
                 },
-                body: JSON.stringify({ email: userInfo.email })
+                body: JSON.stringify({ email: userInfo?.email })
             })
                 .then(res => res.json())
                 .then(data => {
@@ -33,9 +29,11 @@ const Service = ({ service }) => {
                     }
                 })
         }
-        catch (err) {
-            console.log('')
-        }
+        
+    }, []);
+
+    useEffect(() => {
+        AOS.init({ duration: 1000 })
     }, [])
 
     const goToBookPage = () => {

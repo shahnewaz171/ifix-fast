@@ -15,14 +15,19 @@ const Testimonials = () => {
 
     useEffect(() => {
         setLoading(true);
+        console.log('d')
         axios.get("https://powerful-brushlands-39960.herokuapp.com/reviews")
             .then(res => {
                 if (res) {
                     setLoading(false);
                     setTestimonialData(res.data);
+                    console.log(res);
                 }
             })
-            .catch(error => "")
+            .catch(error => {
+                setLoading(false);
+                console.log(error.response);
+            })
     }, [])
 
 
@@ -58,22 +63,26 @@ const Testimonials = () => {
                     <h2 className="text-center pt-5 section-title">Testimonials</h2>
                 </div>
 
-                {loading && (
-                    <div className="text-center my-5">
-                        <div className="spinner-border text-primary" role="status">
-                            <span className="visually-hidden">Loading...</span>
-                        </div>
+                {testimonialData.length ?
+                    <div className="my-5">
+                        <Slider {...conditionalSettings}>
+                            {
+                                testimonialData && testimonialData.map(testimonial => <Testimonial testimonial={testimonial} key={testimonial._id}></Testimonial>)
+                            }
+                        </Slider>
                     </div>
-                )}
-
-                <div className="my-5">
-                    <Slider {...conditionalSettings}>
-                        {
-                            testimonialData && testimonialData.map(testimonial => <Testimonial testimonial={testimonial} key={testimonial._id}></Testimonial>)
-                        }
-
-                    </Slider>
-                </div>
+                    :
+                    loading ?
+                        <div className="text-center my-5">
+                            <div className="spinner-border text-primary" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        :
+                        <div className="text-center mt-4 text-danger">
+                            Not Found
+                        </div>
+                }
             </div>
         </div>
     );

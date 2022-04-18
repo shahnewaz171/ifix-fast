@@ -3,7 +3,7 @@
 }
 .book-info{
     background: #f2f2f3;
-    height: 100vh;
+    min-height: 87vh;
     display: flex;
     justify-content: flex-start;
     width: 81.7%;

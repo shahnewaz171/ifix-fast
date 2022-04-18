@@ -10,17 +10,23 @@ const Contact = () => {
 
     const sendEmail = (e) => {
         e.preventDefault();
+        console.log(e.target);
 
-        emailjs.sendForm('service_200r93a', 'template_p0s2zut', e.target, 'user_hJSU6AMqoIqz90tZfOa1r')
-        .then((data) => {
-           if(data){
-                toast.success("Successfully Send!", {
-                position: toast.POSITION.TOP_RIGHT,
-                autoClose: 3000
+        emailjs.sendForm('service_hmua3ph', 'template_p0s2zut', e.target, 'user_hJSU6AMqoIqz90tZfOa1r')
+            .then((data) => {
+                if (data) {
+                    toast.success("Successfully Send!", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        autoClose: 3000
+                    });
+                    e.target.reset();
+                }
+            }, (error) => {
+                toast.error("Something went wrong! Try again after sometimes", {
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 3000
+                });
             });
-           }
-        }, (error) => "");
-        e.target.reset();
     }
 
     useEffect(() => {

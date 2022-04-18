@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Sidebar from '../Sidebar/Sidebar';
 
@@ -25,7 +25,7 @@ const Review = () => {
 
         // console.log(formData);
 
-        fetch('https://powerful-brushlands-39960.herokuapp.com/addReview', {
+        fetch('https://damp-depths-86611.herokuapp.com/addReview', {
             method: 'POST',
             body: formData
         })

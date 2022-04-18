@@ -1,7 +1,7 @@
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
-import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
-import './SimpleCardForm.css';
 import { useParams } from 'react-router';
+import './SimpleCardForm.css';
 
 const SimpleCardForm = ({handlePayment}) => {
   const {bookId} = useParams();
@@ -13,7 +13,7 @@ const SimpleCardForm = ({handlePayment}) => {
   const [paymentSuccess, setPaymentSuccess] = useState(null);
 
   useEffect(() => {
-    fetch("https://powerful-brushlands-39960.herokuapp.com/service/"+ bookId)
+    fetch("https://damp-depths-86611.herokuapp.com/service/"+ bookId)
     .then(res => res.json())
     .then(data => {
         setSingleService(data);

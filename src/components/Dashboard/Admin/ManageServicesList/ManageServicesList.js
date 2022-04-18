@@ -1,6 +1,6 @@
-import React from 'react';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 
@@ -9,7 +9,7 @@ const ManageServicesList = (props) => {
 
     const deleteService = (id) => {
         // console.log(id);
-        fetch(`https://powerful-brushlands-39960.herokuapp.com/deleteService/${id}`, {
+        fetch(`https://damp-depths-86611.herokuapp.com/deleteService/${id}`, {
             method: 'DELETE',
         })
         .then(res => res.json())

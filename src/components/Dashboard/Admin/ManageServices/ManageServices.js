@@ -1,14 +1,14 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ManageServicesList from '../ManageServicesList/ManageServicesList';
 import Sidebar from '../Sidebar/Sidebar';
 import './ManageServices.css';
-import axios from 'axios';
 
 const ManageServices = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        axios.get("https://powerful-brushlands-39960.herokuapp.com/services")
+        axios.get("https://damp-depths-86611.herokuapp.com/services")
         .then(res => {
             setServices(res.data);
         })

@@ -26,7 +26,7 @@ const AddService = () => {
 
         // console.log(formData);
 
-        fetch('https://powerful-brushlands-39960.herokuapp.com/addService', {
+        fetch('https://damp-depths-86611.herokuapp.com/addService', {
             method: 'POST',
             body: formData
         })

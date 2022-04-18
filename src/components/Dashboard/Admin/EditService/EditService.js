@@ -1,9 +1,9 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import Sidebar from '../Sidebar/Sidebar';
 import './EditService.css';
-import axios from 'axios';
 
 const EditService = () => {
     const {editId} = useParams();
@@ -17,7 +17,7 @@ const EditService = () => {
 
     useEffect(() => {
         const serviceId = localStorage.getItem("editServiceId");
-        axios.get(`https://powerful-brushlands-39960.herokuapp.com/service/${serviceId}`)
+        axios.get(`https://damp-depths-86611.herokuapp.com/service/${serviceId}`)
         .then(res => {
            if (res) {
                setSingleService(res.data)
@@ -33,7 +33,7 @@ const EditService = () => {
         const service = {editId, title, price, description}
         // console.log(service);
 
-        fetch(`https://powerful-brushlands-39960.herokuapp.com/update/${editId}`, {
+        fetch(`https://damp-depths-86611.herokuapp.com/update/${editId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type' : 'application/json'

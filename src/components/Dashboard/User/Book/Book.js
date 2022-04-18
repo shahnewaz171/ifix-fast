@@ -1,10 +1,10 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
 import ProcessPayment from '../ProcessPayment/ProcessPayment';
 import Sidebar from '../Sidebar/Sidebar';
 import './Book.css';
-import axios from 'axios';
 
 const Book = () => {
     const { bookId } = useParams();
@@ -17,7 +17,7 @@ const Book = () => {
 
     useEffect(() => {
         if (bookId) {
-            axios.get(`https://powerful-brushlands-39960.herokuapp.com/service/${bookId}`)
+            axios.get(`https://damp-depths-86611.herokuapp.com/service/${bookId}`)
              .then(res => {
                 if (res) {
                     setSingleService(res.data);
@@ -36,7 +36,7 @@ const Book = () => {
     const handlePaymentSuccess = (paymentId) => {
         const bookingDetails = { ...userInfo, service: singleService, book: bookingData, bookingTime: new Date(), paymentId, status: 'Pending' };
 
-        fetch("https://powerful-brushlands-39960.herokuapp.com/addBooking", {
+        fetch("https://damp-depths-86611.herokuapp.com/addBooking", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

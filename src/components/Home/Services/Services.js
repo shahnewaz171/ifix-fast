@@ -1,9 +1,9 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import './Services.css';
-import Service from '../Service/Service';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
+import Service from '../Service/Service';
+import './Services.css';
 
 const Services = () => {
     const [services, setServices] = useState([]);
@@ -17,7 +17,7 @@ const Services = () => {
 
     useEffect(() => {
         setLoading(true);
-        axios.get("https://powerful-brushlands-39960.herokuapp.com/services")
+        axios.get("https://damp-depths-86611.herokuapp.com/services")
             .then(res => {
                 if (res) {
                     setLoading(false)

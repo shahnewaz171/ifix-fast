@@ -8,7 +8,7 @@ const OrderList = (props) => {
         const status = event.target.value;
         const booking = {_id, status};
 
-        fetch(`https://powerful-brushlands-39960.herokuapp.com/updateStatus/${_id}`, {
+        fetch(`https://damp-depths-86611.herokuapp.com/updateStatus/${_id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type' : 'application/json'

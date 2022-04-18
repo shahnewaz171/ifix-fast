@@ -1,8 +1,8 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../../Admin/Sidebar/Sidebar';
 import OrderList from '../OrderList/OrderList';
 import './Order.css';
-import axios from 'axios';
 
 const Order = () => {
     const [orders, setOrders] = useState([]);
@@ -10,7 +10,7 @@ const Order = () => {
 
     useEffect(() => {
         setLoading(true);
-        axios.get("https://powerful-brushlands-39960.herokuapp.com/orders")
+        axios.get("https://damp-depths-86611.herokuapp.com/orders")
             .then(res => {
                 if (res) {
                     setLoading(false)

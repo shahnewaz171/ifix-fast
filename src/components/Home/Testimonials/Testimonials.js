@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import Testimonial from '../Testimonial/Testimonial';
+import axios from 'axios';
 import "owl.carousel/dist/assets/owl.carousel.min.css";
 import "owl.carousel/dist/assets/owl.theme.default.min.css";
+import React, { useEffect, useState } from 'react';
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import Testimonial from '../Testimonial/Testimonial';
 import './Testimonials.css';
-import axios from 'axios';
 
 
 const Testimonials = () => {
@@ -15,18 +15,16 @@ const Testimonials = () => {
 
     useEffect(() => {
         setLoading(true);
-        console.log('d')
-        axios.get("https://powerful-brushlands-39960.herokuapp.com/reviews")
+        axios.get("https://damp-depths-86611.herokuapp.com/allReview")
             .then(res => {
                 if (res) {
                     setLoading(false);
                     setTestimonialData(res.data);
-                    console.log(res);
                 }
             })
             .catch(error => {
                 setLoading(false);
-                console.log(error.response);
+                console.error(error.response);
             })
     }, [])
 

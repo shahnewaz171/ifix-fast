@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import React, { useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Service = ({ service }) => {
     const [isAdmin, setIsAdmin] = useState(false);
@@ -13,9 +13,9 @@ const Service = ({ service }) => {
     const { title, price, description, img, _id } = service;
 
     useEffect(() => {
-        const userInfo = JSON.parse(localStorage.getItem('userInfo')) || '';
-        if((userInfo) && (userInfo?.email)) {
-            fetch('https://powerful-brushlands-39960.herokuapp.com/isAdmin', {
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        if((userInfo !== null) && (userInfo?.email)) {
+            fetch('https://damp-depths-86611.herokuapp.com/isAdmin', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

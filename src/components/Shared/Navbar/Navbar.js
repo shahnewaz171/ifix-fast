@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useHistory } from 'react-router-dom';
-import logo from '../../../images/logo.png';
 import UserAvatar from '../../../images/b2.png';
+import logo from '../../../images/logo.png';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -11,9 +11,9 @@ const Navbar = () => {
 
 
     useEffect(() => {
-        const userInfo = JSON.parse(localStorage.getItem('userInfo')) || '';
-        if (userInfo) {
-            fetch('https://powerful-brushlands-39960.herokuapp.com/isAdmin', {
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        if (userInfo !== null) {
+            fetch('https://damp-depths-86611.herokuapp.com/isAdmin', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

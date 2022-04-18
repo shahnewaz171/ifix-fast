@@ -20,7 +20,7 @@ const MakeAdmin = () => {
         // console.log(info);
         formData.append('email', info.email);
 
-        fetch('https://powerful-brushlands-39960.herokuapp.com/addAdmin', {
+        fetch('https://damp-depths-86611.herokuapp.com/addAdmin', {
             method: 'POST',
             body: formData
         })

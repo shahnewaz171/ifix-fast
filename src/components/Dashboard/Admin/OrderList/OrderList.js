@@ -1,42 +1,43 @@
-import React from 'react';
+import React from "react";
 
 const OrderList = (props) => {
-    const {book, status, _id} = props.order;
-    // console.log(_id);
+  const { book, status, _id } = props.order;
+  // console.log(_id);
 
-    const handleChange = (_id, event) => {
-        const status = event.target.value;
-        const booking = {_id, status};
+  const handleChange = (_id, event) => {
+    const status = event.target.value;
+    const booking = { _id, status };
 
-        fetch(`https://damp-depths-86611.herokuapp.com/updateStatus/${_id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify( booking)
-        })
-        .then( data => {
-            if(data){
-                // console.log('updated');
-            }
-        })
-    }
-    return (
-        <tr>
-            <td>{book.name}</td>
-            <td>{book.email}</td>
-            <td>{book.service}</td>
-            <td>Credit Card</td>
-            <td>
-                <select name='option' onChange={(event) => handleChange(_id, event)}>
-                    <option defaultValue={status} hidden>{status}</option>
-                    <option value="Pending">Pending</option>
-                    <option value="On going">On going</option>
-                    <option value="Done">Done</option>
-                </select>
-            </td>
-        </tr>
-    );
+    fetch(`https://api-ifix-fast.vercel.app/updateStatus/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    }).then((data) => {
+      if (data) {
+        // console.log('updated');
+      }
+    });
+  };
+  return (
+    <tr>
+      <td>{book.name}</td>
+      <td>{book.email}</td>
+      <td>{book.service}</td>
+      <td>Credit Card</td>
+      <td>
+        <select name="option" onChange={(event) => handleChange(_id, event)}>
+          <option defaultValue={status} hidden>
+            {status}
+          </option>
+          <option value="Pending">Pending</option>
+          <option value="On going">On going</option>
+          <option value="Done">Done</option>
+        </select>
+      </td>
+    </tr>
+  );
 };
 
 export default OrderList;

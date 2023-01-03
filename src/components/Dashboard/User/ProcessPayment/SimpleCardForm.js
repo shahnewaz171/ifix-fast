@@ -1,10 +1,10 @@
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
-import './SimpleCardForm.css';
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import "./SimpleCardForm.css";
 
-const SimpleCardForm = ({handlePayment}) => {
-  const {bookId} = useParams();
+const SimpleCardForm = ({ handlePayment }) => {
+  const { bookId } = useParams();
   const [singleService, setSingleService] = useState([]);
   const stripe = useStripe();
   const elements = useElements();
@@ -13,13 +13,12 @@ const SimpleCardForm = ({handlePayment}) => {
   const [paymentSuccess, setPaymentSuccess] = useState(null);
 
   useEffect(() => {
-    fetch("https://damp-depths-86611.herokuapp.com/service/"+ bookId)
-    .then(res => res.json())
-    .then(data => {
+    fetch("https://api-ifix-fast.vercel.app/service/" + bookId)
+      .then((res) => res.json())
+      .then((data) => {
         setSingleService(data);
-    })
-  }, [bookId])
-
+      });
+  }, [bookId]);
 
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -37,18 +36,18 @@ const SimpleCardForm = ({handlePayment}) => {
     const cardElement = elements.getElement(CardElement);
 
     // Use your card Element with other Stripe.js APIs
-    const {error, paymentMethod} = await stripe.createPaymentMethod({
-      type: 'card',
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
       card: cardElement,
     });
 
     if (error) {
-      setPaymentError(error.message)
-      setPaymentSuccess(null)
+      setPaymentError(error.message);
+      setPaymentSuccess(null);
     } else {
-      setPaymentSuccess(paymentMethod.id)
+      setPaymentSuccess(paymentMethod.id);
       setPaymentError(null);
-      handlePayment(paymentMethod.id)
+      handlePayment(paymentMethod.id);
     }
   };
 
@@ -56,20 +55,24 @@ const SimpleCardForm = ({handlePayment}) => {
     <div className="payment-info">
       <form onSubmit={handleSubmit}>
         <CardElement />
-        {
-        paymentError && <p className="text-danger ms-2">{paymentError}</p>
-      }
-      {
-        paymentSuccess && <p className="text-success ms-2">Your payment was successful</p>
-      }
+        {paymentError && <p className="text-danger ms-2">{paymentError}</p>}
+        {paymentSuccess && (
+          <p className="text-success ms-2">Your payment was successful</p>
+        )}
         <div className="d-flex align-items-center justify-content-between mx-md-2">
-          <p className="mt-4">Your service charged will be <span className="fw-bold">${singleService.price}</span></p>
-          <button className="btn btn-style me-md-5 mt-4" type="submit" disabled={!stripe}>
+          <p className="mt-4">
+            Your service charged will be{" "}
+            <span className="fw-bold">${singleService.price}</span>
+          </p>
+          <button
+            className="btn btn-style me-md-5 mt-4"
+            type="submit"
+            disabled={!stripe}
+          >
             Pay
           </button>
         </div>
       </form>
-      
     </div>
   );
 };

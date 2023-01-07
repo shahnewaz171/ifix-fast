@@ -22,6 +22,7 @@ initializeLoginFramework();
 const Login = () => {
   const [newUser, setNewUser] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [disable, setDisable] = useState(false);
   const { register, handleSubmit, watch, errors } = useForm();
   const password = useRef();
   const toastId = useRef(null);
@@ -71,6 +72,7 @@ const Login = () => {
   const onSubmit = (e) => {
     toast.dismiss(toastId.current);
     if (newUser && user.email && user.password) {
+      setDisable(true);
       createUserWithEmailAndPassword(user.email, user.password).then((res) => {
         if (res?.success) {
           setUser(res);
@@ -78,18 +80,22 @@ const Login = () => {
             position: toast.POSITION.TOP_RIGHT,
             autoClose: 2000,
           });
+          setDisable(false);
           setNewUser(!newUser);
         } else if (res?.error) {
           toast.error(res?.error, {
             position: toast.POSITION.TOP_RIGHT,
             autoClose: 4000,
           });
+          setDisable(false);
         }
       });
     } else if (!newUser && user.email && user.password) {
+      setDisable(true);
       signInWithEmailAndPassword(user.email, user.password).then((res) => {
         if (res?.success) {
           storeUserInfo(res);
+          setDisable(false);
           setLoading(true);
           history.replace(from);
         } else if (res?.error) {
@@ -97,6 +103,7 @@ const Login = () => {
             position: toast.POSITION.TOP_RIGHT,
             autoClose: 4000,
           });
+          setDisable(false);
         }
       });
     }
@@ -116,7 +123,7 @@ const Login = () => {
       <div className="container mt-5">
         <div className="login-area mb-3">
           <div className="mb-3 text-center">
-            {newUser ? <h4>Create an account</h4> : <h4>Login</h4>}
+            {newUser ? <h4>Create an account</h4> : <h4>Log in</h4>}
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
             {/* Signup form */}
@@ -250,11 +257,28 @@ const Login = () => {
               </>
             )}
             <div className="form-group mt-3">
-              <input
-                type="submit"
-                className="btn col-12 btn-style"
-                value={newUser ? "Create an account" : "Login"}
-              />
+              {(() => {
+                if (newUser) {
+                  return (
+                    <button
+                      type="submit"
+                      disabled={disable}
+                      className="btn col-12 btn-style"
+                    >
+                      Sign up
+                    </button>
+                  );
+                }
+                return (
+                  <button
+                    type="submit"
+                    disabled={disable}
+                    className="btn col-12 btn-style"
+                  >
+                    {disable ? "Authenticating..." : "Log in"}
+                  </button>
+                );
+              })()}
               {user?.error && <p className="text-danger mt-2">{user?.error}</p>}
               {user?.success && (
                 <p className="success-alert mt-2">

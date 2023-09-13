@@ -9,7 +9,7 @@ const Books = () => {
 
   useEffect(() => {
     axios
-      .get(`https://api-ifix-fast.vercel.app/bookings?email=${userInfo.email}`)
+      .get(`https://ifixfast.onrender.com/bookings?email=${userInfo.email}`)
       .then((res) => {
         setBookings(res.data);
       })

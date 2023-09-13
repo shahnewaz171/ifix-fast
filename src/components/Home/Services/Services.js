@@ -18,7 +18,7 @@ const Services = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://api-ifix-fast.vercel.app/services")
+      .get("https://ifixfast.onrender.com/services")
       .then((res) => {
         if (res) {
           setLoading(false);

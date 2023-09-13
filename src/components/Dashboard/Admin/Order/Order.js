@@ -11,7 +11,7 @@ const Order = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://api-ifix-fast.vercel.app/orders")
+      .get("https://ifixfast.onrender.com/orders")
       .then((res) => {
         if (res) {
           setLoading(false);

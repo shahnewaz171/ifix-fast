@@ -13,7 +13,7 @@ const SimpleCardForm = ({ handlePayment }) => {
   const [paymentSuccess, setPaymentSuccess] = useState(null);
 
   useEffect(() => {
-    fetch("https://api-ifix-fast.vercel.app/service/" + bookId)
+    fetch("https://ifixfast.onrender.com/service/" + bookId)
       .then((res) => res.json())
       .then((data) => {
         setSingleService(data);

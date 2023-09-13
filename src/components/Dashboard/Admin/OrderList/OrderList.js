@@ -8,7 +8,7 @@ const OrderList = (props) => {
     const status = event.target.value;
     const booking = { _id, status };
 
-    fetch(`https://api-ifix-fast.vercel.app/updateStatus/${_id}`, {
+    fetch(`https://ifixfast.onrender.com/updateStatus/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

@@ -18,7 +18,7 @@ const EditService = () => {
   useEffect(() => {
     const serviceId = localStorage.getItem("editServiceId");
     axios
-      .get(`https://api-ifix-fast.vercel.app/service/${serviceId}`)
+      .get(`https://ifixfast.onrender.com/service/${serviceId}`)
       .then((res) => {
         if (res) {
           setSingleService(res.data);
@@ -34,7 +34,7 @@ const EditService = () => {
     const service = { editId, title, price, description };
     // console.log(service);
 
-    fetch(`https://api-ifix-fast.vercel.app/update/${editId}`, {
+    fetch(`https://ifixfast.onrender.com/update/${editId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

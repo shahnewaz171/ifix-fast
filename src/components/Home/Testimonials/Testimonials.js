@@ -15,7 +15,7 @@ const Testimonials = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://api-ifix-fast.vercel.app/allReview")
+      .get("https://ifixfast.onrender.com/allReview")
       .then((res) => {
         if (res) {
           setLoading(false);

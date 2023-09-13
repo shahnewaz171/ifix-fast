@@ -12,7 +12,7 @@ const Navbar = () => {
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     if (userInfo !== null) {
-      fetch("https://api-ifix-fast.vercel.app/isAdmin", {
+      fetch("https://ifixfast.onrender.com/isAdmin", {
         method: "POST",
         headers: {
           "content-type": "application/json",

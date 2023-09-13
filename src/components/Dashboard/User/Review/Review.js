@@ -25,7 +25,7 @@ const Review = () => {
 
     // console.log(formData);
 
-    fetch("https://api-ifix-fast.vercel.app/addReview", {
+    fetch("https://ifixfast.onrender.com/addReview", {
       method: "POST",
       body: formData,
     })

@@ -9,7 +9,7 @@ const ManageServices = () => {
 
   useEffect(() => {
     axios
-      .get("https://api-ifix-fast.vercel.app/services")
+      .get("https://ifixfast.onrender.com/services")
       .then((res) => {
         setServices(res.data);
       })

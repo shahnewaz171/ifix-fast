@@ -19,7 +19,7 @@ const MakeAdmin = () => {
     // console.log(info);
     formData.append("email", info.email);
 
-    fetch("https://api-ifix-fast.vercel.app/addAdmin", {
+    fetch("https://ifixfast.onrender.com/addAdmin", {
       method: "POST",
       body: formData,
     })

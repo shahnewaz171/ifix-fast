@@ -17,7 +17,7 @@ const Book = () => {
   useEffect(() => {
     if (bookId) {
       axios
-        .get(`https://api-ifix-fast.vercel.app/service/${bookId}`)
+        .get(`https://ifixfast.onrender.com/service/${bookId}`)
         .then((res) => {
           if (res) {
             setSingleService(res.data);
@@ -42,7 +42,7 @@ const Book = () => {
       status: "Pending",
     };
 
-    fetch("https://api-ifix-fast.vercel.app/addBooking", {
+    fetch("https://ifixfast.onrender.com/addBooking", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

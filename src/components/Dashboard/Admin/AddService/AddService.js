@@ -26,7 +26,7 @@ const AddService = () => {
 
     // console.log(formData);
 
-    fetch("https://api-ifix-fast.vercel.app/addService", {
+    fetch("https://ifixfast.onrender.com/addService", {
       method: "POST",
       body: formData,
     })

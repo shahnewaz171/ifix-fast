@@ -8,7 +8,7 @@ const ManageServicesList = (props) => {
 
   const deleteService = (id) => {
     // console.log(id);
-    fetch(`https://api-ifix-fast.vercel.app/deleteService/${id}`, {
+    fetch(`https://ifixfast.onrender.com/deleteService/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

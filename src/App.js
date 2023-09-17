@@ -5,38 +5,20 @@ import Login from "./components/Login/Login";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Navbar from "./components/Shared/Navbar/Navbar";
 import ScrollToTop from "./components/Shared/ScrollToTop/ScrollToTop";
-import Project from "./components/Home/Project/Project";
-import Contact from "./components/Home/Contact/Contact";
 import Loading from "./components/Loading";
+import Book from "./components/Dashboard/User/Book/Book";
+import Review from "./components/Dashboard//User/Review/Review";
+import Order from "./components/Dashboard/Admin/Order/Order";
+import Project from "./components/Home/Project/Project";
+import AddService from "./components/Dashboard/Admin/AddService/AddService";
+import MakeAdmin from "./components/Dashboard/Admin/MakeAdmin/MakeAdmin";
+import Books from "./components/Dashboard/User/Books/Books";
+import ManageServices from "./components/Dashboard/Admin/ManageServices/ManageServices";
+import EditService from "./components/Dashboard/Admin/EditService/EditService";
+import Services from "./components/Home/Services/Services";
+import Home from "./components/Home/Home/Home";
 import Footer from "./components/Shared/Footer/Footer";
-
-// lazy components
-const Home = React.lazy(() => import("./components/Home/Home/Home"));
-const Book = React.lazy(() => import("./components/Dashboard/User/Book/Book"));
-const Review = React.lazy(() =>
-  import("./components/Dashboard//User/Review/Review")
-);
-const Order = React.lazy(() =>
-  import("./components/Dashboard/Admin/Order/Order")
-);
-const AddService = React.lazy(() =>
-  import("./components/Dashboard/Admin/AddService/AddService")
-);
-const MakeAdmin = React.lazy(() =>
-  import("./components/Dashboard/Admin/MakeAdmin/MakeAdmin")
-);
-const Books = React.lazy(() =>
-  import("./components/Dashboard/User/Books/Books")
-);
-const ManageServices = React.lazy(() =>
-  import("./components/Dashboard/Admin/ManageServices/ManageServices")
-);
-const EditService = React.lazy(() =>
-  import("./components/Dashboard/Admin/EditService/EditService")
-);
-const Services = React.lazy(() =>
-  import("./components/Home/Services/Services")
-);
+import Contact from "./components/Home/Contact/Contact";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -182,10 +164,10 @@ function App() {
   const allRoutes = useRoutes(element);
 
   return (
-    <React.Suspense fallback={<Loading />}>
+    <>
       {loading ? <Loading /> : allRoutes}
       <ScrollToTop />
-    </React.Suspense>
+    </>
   );
 }
 

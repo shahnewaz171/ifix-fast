@@ -56,7 +56,7 @@ const Navbar = () => {
       }
     >
       <div className="container">
-        <Link to="#" className="navbar-brand">
+        <Link to="/" className="navbar-brand">
           <img src={logo} className="img-fluid" alt="logo" />
         </Link>
         {userInfo != null && (

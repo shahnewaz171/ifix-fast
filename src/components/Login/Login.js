@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import logo from "../../images/logo.png";
@@ -37,7 +37,7 @@ const Login = () => {
     newUser: false,
   });
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
   const { from } = location.state || { from: { pathname: "/" } };
 
@@ -45,7 +45,7 @@ const Login = () => {
     handleGoogleSignIn().then((res) => {
       if (res) {
         setLoading(true);
-        history.replace(from);
+        navigate(from, { replace: true });
       }
     });
   };
@@ -54,7 +54,7 @@ const Login = () => {
     handleFacebookSignIn().then((res) => {
       if (res) {
         setLoading(true);
-        history.replace(from);
+        navigate(from, { replace: true });
       }
     });
   };
@@ -97,7 +97,7 @@ const Login = () => {
           storeUserInfo(res);
           setDisable(false);
           setLoading(true);
-          history.replace(from);
+          navigate(from, { replace: true });
         } else if (res?.error) {
           toast.error(res?.error, {
             position: toast.POSITION.TOP_RIGHT,

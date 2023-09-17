@@ -1,26 +1,20 @@
-import React from 'react';
-import { Redirect, Route } from 'react-router';
+import React from "react";
+import { Navigate, useLocation } from "react-router-dom";
 
-const PrivateRoute = ({ children, ...rest }) => {
-    const userInfo = JSON.parse(localStorage.getItem('userInfo')) || {};
+const PrivateRoute = ({ children }) => {
+  const location = useLocation();
+  const userInfo = JSON.parse(localStorage.getItem("userInfo")) || {};
 
-    return (
-        <Route
-            {...rest}
-            render={({ location }) =>
-                userInfo.email ? (
-                children
-                ) : (
-                <Redirect
-                    to={{
-                    pathname: "/login",
-                    state: { from: location }
-                    }}
-                />
-                )
-            }
-        />
-    );
+  return userInfo?.email ? (
+    children
+  ) : (
+    <Navigate
+      to={{
+        pathname: "/login",
+        state: { from: location },
+      }}
+    />
+  );
 };
 
 export default PrivateRoute;

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import ProcessPayment from "../ProcessPayment/ProcessPayment";
 import Sidebar from "../Sidebar/Sidebar";
 import "./Book.css";

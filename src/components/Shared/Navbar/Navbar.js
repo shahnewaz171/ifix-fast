@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import UserAvatar from "../../../images/b2.png";
 import logo from "../../../images/logo.png";
 import "./Navbar.css";
@@ -7,7 +7,7 @@ import "./Navbar.css";
 const Navbar = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [navbarAnimation, setNavbarAnimation] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -44,8 +44,7 @@ const Navbar = () => {
 
   const logOut = () => {
     localStorage.clear();
-    history.push("/");
-    history.go(0);
+    navigate("/login");
   };
 
   return (
@@ -107,9 +106,9 @@ const Navbar = () => {
             <li className="nav-item">
               <NavLink
                 to="/"
-                exact
-                activeClassName="nav-link-active"
-                className="nav-link me-4"
+                className={({ isActive }) =>
+                  `nav-link me-4 ${isActive ? "nav-link-active" : ""}`
+                }
               >
                 Home
               </NavLink>
@@ -117,8 +116,9 @@ const Navbar = () => {
             <li className="nav-item">
               <NavLink
                 to="/services"
-                activeClassName="nav-link-active"
-                className="nav-link me-4"
+                className={({ isActive }) =>
+                  `nav-link me-4 ${isActive ? "nav-link-active" : ""}`
+                }
               >
                 Services
               </NavLink>
@@ -126,8 +126,9 @@ const Navbar = () => {
             <li className="nav-item">
               <NavLink
                 to="/projects"
-                activeClassName="nav-link-active"
-                className="nav-link me-4"
+                className={({ isActive }) =>
+                  `nav-link me-4 ${isActive ? "nav-link-active" : ""}`
+                }
               >
                 Projects
               </NavLink>
@@ -144,8 +145,9 @@ const Navbar = () => {
             <li className="nav-item">
               <NavLink
                 to="/contact"
-                activeClassName="nav-link-active"
-                className="nav-link me-4"
+                className={({ isActive }) =>
+                  `nav-link me-4 ${isActive ? "nav-link-active" : ""}`
+                }
               >
                 Contact
               </NavLink>

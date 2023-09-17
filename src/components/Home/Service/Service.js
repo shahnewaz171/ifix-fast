@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import React, { useEffect, useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Service = ({ service }) => {
   const [isAdmin, setIsAdmin] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
   const toastId = useRef(null);
   const { title, price, description, img, _id } = service;
 
@@ -43,8 +43,7 @@ const Service = ({ service }) => {
         autoClose: 3000,
       });
     } else {
-      const location = `/book/${_id}`;
-      history.push(location);
+      navigate(`/book/${_id}`);
     }
   };
 

@@ -52,7 +52,7 @@ const Services = () => {
           <div className="text-center mt-4 text-danger">Not Found</div>
         )}
 
-        {services.length && visible === allServices.length ? (
+        {services.length > allServices.length && (
           <div className="mt-4 pt-2 text-center pb-5">
             <button
               onClick={ViewMoreServices}
@@ -61,8 +61,6 @@ const Services = () => {
               Explore More
             </button>
           </div>
-        ) : (
-          ""
         )}
       </div>
       <ToastContainer />

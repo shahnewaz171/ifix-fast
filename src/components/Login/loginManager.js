@@ -33,7 +33,6 @@ export const handleGoogleSignIn = () => {
       }
     })
     .catch((error) => {
-      alert("Something went wrong! Please try again");
       // console.log(errorCode, errorMessage);
     });
 };
@@ -58,7 +57,7 @@ export const handleFacebookSignIn = () => {
       }
     })
     .catch((error) => {
-      alert("Something went wrong! Please try again");
+      // alert("Something went wrong! Please try again");
       // console.log(errorCode, errorMessage);
     });
 };
